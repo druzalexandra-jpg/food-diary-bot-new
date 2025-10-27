@@ -109,4 +109,10 @@ if __name__ == '__main__':
     app.add_handler(CommandHandler("summary", summary))  # ← Исправлено!
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     print("Бот запущен!")
+    print("Проверяю доступ к таблице...")
+try:
+    sheet = get_worksheet()
+    print("✅ Доступ к таблице есть!")
+except Exception as e:
+    print(f"❌ Ошибка доступа: {str(e)}")
     app.run_polling()
