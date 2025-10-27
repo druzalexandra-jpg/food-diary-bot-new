@@ -98,7 +98,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         parse_mode="Markdown"
     )
 
-# === Команда /итог ===
+# === Команда /summary ===
 async def summary(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("📊 Скоро будет анализ за день! Пока просто записываю всё в таблицу.")
 
@@ -106,7 +106,7 @@ async def summary(update: Update, context: ContextTypes.DEFAULT_TYPE):
 if __name__ == '__main__':
     app = Application.builder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
-    app.add_handler(CommandHandler("итог", summary))
+    app.add_handler(CommandHandler("summary", summary))  # ← Исправлено!
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     print("Бот запущен!")
     app.run_polling()
